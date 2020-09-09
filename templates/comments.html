@@ -1,0 +1,20 @@
+<!--{% for comment in post.comments.all %}
+{% if user.is_authenticated %}
+<div class="comment">
+  <strong>{{ comment.author }}</strong>
+  <p>{{ comment.text|linebreaksbr }}</p>
+  <p>
+    <a href="{% url 'reply_form' comment.pk %}">Reply</a>    
+  </p>
+
+  {% for reply in comment.replies.all %}
+  {% if user.is_authenticated %}
+  <div class="reply ml-5">
+    <strong>{{ reply.author }}
+    <p>{{ reply.text|linebreaksbr }}</p>    
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endfor %}-->

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'style_form.css' %}">
+{% endblock customcss %}
+{% block header %}
+<div class="alert alert-light" role="alert">
+    <h2>Comment Reply Form</h2><hr>
+</div>
+{% endblock header %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <main class="col-md-8">
+      <p>To: {{ comment.author }}</p>
+      <p class="text-black-50">{{ comment.text|linebreaksbr }}</p>
+      <form form action="" method="POST" id="reply_form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Send</button>        
+      </form>
+    </main>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'style_create.css' %}">
+{% endblock customcss %}
+{% block header %}
+<div class="alert alert-light" role="alert">
+    <h2>Create</h2><hr>
+  </div>
+{% endblock header %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <p>Title<br><input type="text" name="title"></p>
+    <p>Content<br><input type="text" name="content"></p>
+    <p>Image<br><input type="file" name="images"></p>
+    <input type="hidden" name="author" value="{{user.username}}"><br>
+    <button class="btn btn-primary" type="submit">Create</button>    
+</form>
+{% else %}
+Please login
+{% endif %}
+{% endblock content %}
+
